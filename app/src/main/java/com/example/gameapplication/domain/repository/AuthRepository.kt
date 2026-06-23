@@ -14,4 +14,6 @@ interface AuthRepository {
         username: String,
         phone: String
     ): String
+
+    fun clearToken()
 }

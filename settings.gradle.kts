@@ -21,6 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "GameApplication"
 include(":app")
-include(":uikit")
+include(":UIKit")
 include(":network")
 include(":storybook")

@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":uikit"))
+    implementation(project(":UIKit"))
     implementation(project(":network"))
 
     implementation(libs.androidx.core.ktx)

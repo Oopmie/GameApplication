@@ -1,5 +1,6 @@
 package com.example.uikit
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
@@ -8,8 +9,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.uikit.theme.AppRoundedLarge
+import com.example.uikit.theme.GradientBot
 import com.example.uikit.theme.GradientTop
 import com.example.uikit.theme.White
 
@@ -23,12 +27,14 @@ fun AppButton(
         onClick = onClick,
         shape = AppRoundedLarge,
         colors = ButtonDefaults.buttonColors(
-            containerColor = GradientTop
+            containerColor = Color.Transparent
         ),
         modifier = modifier
+            .background(brush = Brush.verticalGradient(listOf(GradientTop, GradientBot)),
+                shape = ButtonDefaults.shape)
             .fillMaxWidth()
             .height(56.dp)
-    ){
+    ) {
         Text(
             text = text,
             color = White,

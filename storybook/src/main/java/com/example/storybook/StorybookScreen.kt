@@ -1,12 +1,12 @@
 package com.example.storybook
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.uikit.AppBottomBar
 import com.example.uikit.AppButton
 import com.example.uikit.AppCard
 import com.example.uikit.AppCheckbox
@@ -17,6 +17,7 @@ import com.example.uikit.AppTextField
 import com.example.uikit.AppTimerCard
 import com.example.uikit.AppTopBar
 import com.example.uikit.components.*
+import com.example.uikit.theme.White
 
 @Composable
 fun StorybookScreen() {
@@ -27,12 +28,12 @@ fun StorybookScreen() {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize().background(color = White)
             .verticalScroll(
                 rememberScrollState()
             )
-            .padding(horizontal = 16.dp, vertical = 100.dp),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
+            .padding(horizontal = 16.dp, vertical = 100.dp)
+        ,verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
 
         AppTopBar(
@@ -90,13 +91,8 @@ fun StorybookScreen() {
         }
 
         AppPagination(
-            current = 1,
+            current = 0,
             total = 3
-        )
-
-        AppBottomBar(
-            selected = 0,
-            onSelected = {}
         )
 
         var showDialog by remember { mutableStateOf(true) }

@@ -1,5 +1,6 @@
 package com.example.gameapplication.data.repository
 
+import android.util.Log
 import com.example.gameapplication.domain.repository.AuthRepository
 import com.example.network.api.AuthApi
 import com.example.network.dto.request.RegisterRequest
@@ -19,7 +20,7 @@ class AuthRepositoryImpl(
 
         val user = users.find {
             it.email == email && it.password == password
-        } ?: throw Exception("User not found")
+        } ?: throw Exception("Invalid credentials")
 
         tokenStorage.saveToken(user.token)
 
@@ -34,18 +35,23 @@ class AuthRepositoryImpl(
         phone: String
     ): String {
 
-        val response = authApi.register(
+        val newUser = authApi.register(
             RegisterRequest(
                 name = name,
                 email = email,
                 password = password,
                 username = username,
-                phone = phone
+                phone = phone,
+                token = "default_token",
+                history = "",
+                notifications = ""
             )
         )
+        tokenStorage.saveToken(newUser.token)
+        return newUser.token
+    }
 
-        tokenStorage.saveToken(response.token)
-
-        return response.token
+    override fun clearToken() {
+        tokenStorage.clearToken()
     }
 }

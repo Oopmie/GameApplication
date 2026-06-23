@@ -5,7 +5,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -15,7 +14,6 @@ import com.example.gameapplication.presentation.main.HomeScreen
 import com.example.gameapplication.presentation.main.ProfileScreen
 import com.example.gameapplication.presentation.main.ScheduleScreen
 import com.example.gameapplication.presentation.main.StatisticsScreen
-import com.example.uikit.AppBottomBar
 
 @Composable
 fun MainNavGraph() {

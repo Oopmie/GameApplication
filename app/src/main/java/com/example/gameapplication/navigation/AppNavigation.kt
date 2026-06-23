@@ -1,13 +1,18 @@
 package com.example.gameapplication.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.gameapplication.data.local.AppPreferences
 import com.example.gameapplication.presentation.login.LoginScreen
 import com.example.gameapplication.presentation.login.LoginViewModel
 import com.example.gameapplication.presentation.register.RegisterScreen
 import com.example.gameapplication.presentation.register.RegisterViewModel
+import com.example.gameapplication.presentation.splash.Pager
+import com.example.gameapplication.presentation.splash.SplashScreen
 
 @Composable
 fun AppNavigation(
@@ -15,10 +20,48 @@ fun AppNavigation(
     loginViewModel: LoginViewModel,
     registerViewModel: RegisterViewModel
 ) {
+    val context = LocalContext.current
+    val appPreferences = remember { AppPreferences(context) }
+
     NavHost(
         navController = navController,
-        startDestination = "login"
+        startDestination = "splash"
     ) {
+        composable("splash") {
+            SplashScreen(
+                appPreferences = appPreferences,
+
+                onNavigateToOnboarding = {
+                    navController.navigate("onboarding") {
+                        popUpTo("splash") {
+                            inclusive = true
+                        }
+                    }
+                },
+
+                onNavigateToLogin = {
+                    navController.navigate("login") {
+                        popUpTo("splash") {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable("onboarding") {
+            Pager(
+                appPreferences = appPreferences,
+
+                onFinish = {
+                    navController.navigate("register") {
+                        popUpTo("onboarding") {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
 
         composable("login") {
             LoginScreen(
@@ -41,13 +84,17 @@ fun AppNavigation(
                 viewModel = registerViewModel,
                 onSuccess = {
                     navController.navigate("main") {
-                        popUpTo("register") {
+                        popUpTo("login") {
                             inclusive = true
                         }
                     }
                 },
                 onGoLogin = {
-                    navController.popBackStack()
+                    navController.navigate("login") {
+                        popUpTo("register") {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }

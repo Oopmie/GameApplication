@@ -23,7 +23,7 @@ class LoginViewModel(
         _state.value = _state.value.copy(password = v)
     }
 
-    fun login() {
+    fun login(onSuccess: () -> Unit) {
         viewModelScope.launch {
             _state.value = _state.value.copy(isLoading = true)
 
@@ -37,6 +37,8 @@ class LoginViewModel(
                     isLoading = false,
                     success = true
                 )
+
+                onSuccess()
 
             } catch (e: Exception) {
                 _state.value = _state.value.copy(

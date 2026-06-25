@@ -2,6 +2,7 @@ package com.example.uikit
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,7 +16,7 @@ fun AppDialog(
     onClick: () -> Unit
 ) {
     Dialog (onDismissRequest = {}) {
-        AppCard {
+        Card {
             Text (title)
 
             Spacer(modifier = Modifier.height(16.dp))

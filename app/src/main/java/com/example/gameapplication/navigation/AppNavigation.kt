@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import com.example.gameapplication.data.local.AppPreferences
 import com.example.gameapplication.presentation.login.LoginScreen
 import com.example.gameapplication.presentation.login.LoginViewModel
+import com.example.gameapplication.presentation.main.HomeScreen
 import com.example.gameapplication.presentation.register.RegisterScreen
 import com.example.gameapplication.presentation.register.RegisterViewModel
 import com.example.gameapplication.presentation.splash.Pager
@@ -98,6 +99,8 @@ fun AppNavigation(
                 }
             )
         }
+
+
 
         composable("main") {
             MainNavGraph()

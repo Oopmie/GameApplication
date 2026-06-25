@@ -71,9 +71,17 @@ fun MainNavGraph() {
         ) {
 
             composable("home") {
-                HomeScreen()
+                HomeScreen(
+                    onLogout = {
+                        navController.navigate("login") {
+                            popUpTo("main") { inclusive = true }
+                        }
+                    },
+                    onNavigate = { route ->
+                        navController.navigate(route)
+                    }
+                )
             }
-
             composable("statistics") {
                 StatisticsScreen()
             }

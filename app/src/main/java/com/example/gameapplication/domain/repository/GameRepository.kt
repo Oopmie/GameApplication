@@ -1,7 +1,6 @@
 package com.example.gameapplication.domain.repository
 
 import com.example.network.dto.response.GameResponse
-import com.example.network.dto.response.LeaderboardResponse
 
 interface GameRepository {
 

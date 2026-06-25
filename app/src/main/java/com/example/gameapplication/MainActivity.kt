@@ -23,10 +23,10 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             val tokenStorage = TokenStorage()
-            val network = NetworkModule.create(tokenStorage)
+            val api = NetworkModule.create(tokenStorage)
 
             val authRepository = AuthRepositoryImpl(
-                authApi = network.authApi,
+                api = api,
                 tokenStorage = tokenStorage
             )
 
@@ -39,9 +39,9 @@ class MainActivity : ComponentActivity() {
             AppNavigation(
                 navController = navController,
                 loginViewModel = loginViewModel,
-                registerViewModel = registerViewModel
+                registerViewModel = registerViewModel,
+                tokenStorage = tokenStorage
             )
         }
     }
 }
-

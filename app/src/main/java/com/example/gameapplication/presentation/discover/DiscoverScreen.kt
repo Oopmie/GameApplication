@@ -1,4 +1,4 @@
-package com.example.gameapplication.presentation.main
+package com.example.gameapplication.presentation.discover
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ProfileScreen(){
+fun DiscoverScreen(){
     Column(modifier = Modifier.fillMaxSize().padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Text("hi")
         Text("friend")
-        Text("it's ProfileScreen")
+        Text("it's DiscoverScreen")
     }
 }

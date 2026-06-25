@@ -9,18 +9,20 @@ import androidx.navigation.compose.composable
 import com.example.gameapplication.data.local.AppPreferences
 import com.example.gameapplication.presentation.login.LoginScreen
 import com.example.gameapplication.presentation.login.LoginViewModel
-import com.example.gameapplication.presentation.main.HomeScreen
 import com.example.gameapplication.presentation.register.RegisterScreen
 import com.example.gameapplication.presentation.register.RegisterViewModel
 import com.example.gameapplication.presentation.splash.Pager
 import com.example.gameapplication.presentation.splash.SplashScreen
+import com.example.network.storage.TokenStorage
 
 @Composable
 fun AppNavigation(
     navController: NavHostController,
     loginViewModel: LoginViewModel,
-    registerViewModel: RegisterViewModel
+    registerViewModel: RegisterViewModel,
+    tokenStorage: TokenStorage
 ) {
+
     val context = LocalContext.current
     val appPreferences = remember { AppPreferences(context) }
 
@@ -28,23 +30,18 @@ fun AppNavigation(
         navController = navController,
         startDestination = "splash"
     ) {
+
         composable("splash") {
             SplashScreen(
                 appPreferences = appPreferences,
-
                 onNavigateToOnboarding = {
                     navController.navigate("onboarding") {
-                        popUpTo("splash") {
-                            inclusive = true
-                        }
+                        popUpTo("splash") { inclusive = true }
                     }
                 },
-
                 onNavigateToLogin = {
                     navController.navigate("login") {
-                        popUpTo("splash") {
-                            inclusive = true
-                        }
+                        popUpTo("splash") { inclusive = true }
                     }
                 }
             )
@@ -53,12 +50,9 @@ fun AppNavigation(
         composable("onboarding") {
             Pager(
                 appPreferences = appPreferences,
-
                 onFinish = {
                     navController.navigate("register") {
-                        popUpTo("onboarding") {
-                            inclusive = true
-                        }
+                        popUpTo("onboarding") { inclusive = true }
                     }
                 }
             )
@@ -69,9 +63,7 @@ fun AppNavigation(
                 viewModel = loginViewModel,
                 onSuccess = {
                     navController.navigate("main") {
-                        popUpTo("login") {
-                            inclusive = true
-                        }
+                        popUpTo("login") { inclusive = true }
                     }
                 },
                 onGoRegister = {
@@ -85,25 +77,17 @@ fun AppNavigation(
                 viewModel = registerViewModel,
                 onSuccess = {
                     navController.navigate("main") {
-                        popUpTo("login") {
-                            inclusive = true
-                        }
+                        popUpTo("register") { inclusive = true }
                     }
                 },
                 onGoLogin = {
-                    navController.navigate("login") {
-                        popUpTo("register") {
-                            inclusive = true
-                        }
-                    }
+                    navController.popBackStack()
                 }
             )
         }
 
-
-
         composable("main") {
-            MainNavGraph()
+            MainNavGraph(tokenStorage = tokenStorage)
         }
     }
 }

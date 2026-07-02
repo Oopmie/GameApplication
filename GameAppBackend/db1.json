@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Milana",
+      "username": "oopmie",
+      "email": "t",
+      "password": "t",
+      "token": "default_token"
+    }
+  ],
+  "games": [
+    {
+      "createdAt": "1782969940660",
+      "isWin": true,
+      "points": 90,
+      "type": "circle",
+      "userId": "1",
+      "id": "05tesG6nvh8"
+    },
+    {
+      "createdAt": "1782985085329",
+      "isWin": true,
+      "points": 90,
+      "type": "circle",
+      "userId": "1",
+      "id": "6zJGzCew0pc"
+    },
+    {
+      "createdAt": "1782985103931",
+      "isWin": true,
+      "points": 90,
+      "type": "circle",
+      "userId": "1",
+      "id": "9Y_SKNmu5aQ"
+    }
+  ],
+  "scheduledGames": [
+    {
+      "id": "1",
+      "userId": "1",
+      "title": "Battle with friends",
+      "dateTime": "2026-06-25T15:00:00",
+      "status": "scheduled"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

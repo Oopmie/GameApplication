@@ -6,6 +6,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.uikit.AppButton
 import com.example.uikit.AppCard
@@ -28,12 +30,13 @@ fun StorybookScreen() {
 
     Column(
         modifier = Modifier
-            .fillMaxSize().background(color = White)
+            .fillMaxSize()
+            .background(color = White)
             .verticalScroll(
                 rememberScrollState()
             )
-            .padding(horizontal = 16.dp, vertical = 100.dp)
-        ,verticalArrangement = Arrangement.spacedBy(20.dp)
+            .padding(horizontal = 16.dp, vertical = 100.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
 
         AppTopBar(
@@ -82,13 +85,6 @@ fun StorybookScreen() {
         AppTimerCard(
             time = "00:25:11"
         )
-
-        AppCard {
-            AppButton(
-                text = "Card Button",
-                onClick = {}
-            )
-        }
 
         AppPagination(
             current = 0,

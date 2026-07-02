@@ -1,6 +1,6 @@
-package com.example.gameapplication.data.repository
+package com.example.gameapplication.data
 
-import com.example.gameapplication.domain.repository.AuthRepository
+import com.example.gameapplication.domain.AuthRepository
 import com.example.network.api.ApiService
 import com.example.network.dto.UserDto
 import com.example.network.storage.TokenStorage
@@ -17,14 +17,14 @@ class AuthRepositoryImpl(
         val user = users.find {
             it.email == email && it.password == password
         } ?: throw Exception("Invalid credentials")
-
+        println("FOUND USER ID = ${user.id}")
         tokenStorage.saveUser(
             id = user.id,
             username = user.username,
             email = user.email,
             token = user.token
         )
-
+        println("SAVED USER ID = ${tokenStorage.getUserId()}")
         return user.token
     }
 
@@ -57,6 +57,6 @@ class AuthRepositoryImpl(
     }
 
     override fun clearToken() {
-        tokenStorage.clearToken()
+        tokenStorage.clearUser()
     }
 }

@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gameapplication.domain.usecase.LoginUseCase
+import com.example.gameapplication.domain.LoginUseCase
 import kotlinx.coroutines.launch
 
 

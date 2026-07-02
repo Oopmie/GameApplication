@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 val GradientTop = Color(0xFFFF6480)
 val GradientBot = Color(0xFFF22E63)
 val TextPink = Color(0xFFFA5075)
+val SuccessBack = Color(0xB3FA5075)
 
 val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)

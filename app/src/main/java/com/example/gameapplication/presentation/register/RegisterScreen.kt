@@ -39,7 +39,6 @@ fun RegisterScreen(
     onGoLogin: () -> Unit
 ) {
     val state by viewModel.state
-
     Column(
         modifier = Modifier
             .verticalScroll(enabled = true, state = ScrollState(0))
@@ -49,14 +48,12 @@ fun RegisterScreen(
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Image(
             painter = painterResource(R.drawable.reg),
             contentDescription = null,
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillWidth
         )
-
         Column(modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(20.dp)) {
             Text("Create Account", color = TextPink, style = AppTypography.displayLarge)
@@ -71,31 +68,26 @@ fun RegisterScreen(
                 onValueChange = viewModel::onNameChange,
                 placeholder = "Full Name"
             )
-
             AppTextField(
                 value = state.username,
                 onValueChange = viewModel::onUsernameChange,
                 placeholder = "User Name"
             )
-
             AppTextField(
                 value = state.phone,
                 onValueChange = viewModel::onPhoneChange,
                 placeholder = "Your Phone"
             )
-
             AppTextField(
                 value = state.email,
                 onValueChange = viewModel::onEmailChange,
                 placeholder = "Email"
             )
-
             AppPasswordField(
                 value = state.password,
                 onValueChange = viewModel::onPasswordChange
             )
         }
-
         Column(horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(20.dp)) {
             state.error?.let {
@@ -107,7 +99,6 @@ fun RegisterScreen(
                 onClick = { viewModel.register(onSuccess) },
                 modifier = Modifier.width(200.dp)
             )
-
             Text("Connect With:", color = TextPink)
             Row(horizontalArrangement = Arrangement.spacedBy(15.dp)) {
                 Image(
@@ -123,16 +114,11 @@ fun RegisterScreen(
                     contentScale = ContentScale.FillWidth
                 )
             }
-
             Text("Already have an account?")
 
             TextButton(onClick = onGoLogin) {
                 Text("Login", color = TextPink)
             }
-
-
         }
-
-
     }
 }

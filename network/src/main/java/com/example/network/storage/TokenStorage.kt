@@ -17,6 +17,7 @@ class TokenStorage {
         this.username = username
         this.email = email
         this.token = token
+        println("SAVED USER ID = $userId")
     }
 
     fun getToken(): String? = token
@@ -25,7 +26,7 @@ class TokenStorage {
 
     fun getUsername(): String? = username
 
-    fun clearToken() {
+    fun clearUser() {
         token = null
         userId = null
         username = null

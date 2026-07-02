@@ -18,7 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.gameapplication.R
-import com.example.gameapplication.data.local.AppPreferences
+import com.example.gameapplication.data.AppPreferences
 import com.example.uikit.theme.GradientBot
 import com.example.uikit.theme.GradientTop
 import kotlinx.coroutines.delay

@@ -1,4 +1,4 @@
-package com.example.gameapplication.domain.repository
+package com.example.gameapplication.domain
 
 interface AuthRepository {
 

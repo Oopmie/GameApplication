@@ -23,7 +23,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.gameapplication.R
-import com.example.gameapplication.data.local.AppPreferences
+import com.example.gameapplication.data.AppPreferences
 import com.example.uikit.AppButton
 import com.example.uikit.AppPagination
 import com.example.uikit.theme.AppTypography

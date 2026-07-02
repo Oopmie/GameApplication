@@ -12,14 +12,15 @@ class ScheduleViewModel(
     private val tokenStorage: TokenStorage
 ) : ViewModel() {
 
-    fun createGame(title: String, date: String) {
+    fun createGame(
+        title: String,
+        date: String
+    ) {
         viewModelScope.launch {
-
-            val userId = tokenStorage.getUserId() ?: return@launch
 
             api.addScheduled(
                 ScheduledGameDto(
-                    userId = userId,
+                    userId = tokenStorage.getUserId().orEmpty(),
                     title = title,
                     dateTime = date,
                     status = "scheduled"

@@ -4,5 +4,7 @@ data class StatisticsState(
     val earnings: Int = 0,
     val circleWins: Int = 0,
     val imageWins: Int = 0,
-    val scheduledCount: Int = 0
+    val scheduledCount: Int = 0,
+    val totalGames: Int = 0,
+    val weeklyPoints: List<Int> = listOf(0, 0, 0, 0, 0, 0, 0)
 )

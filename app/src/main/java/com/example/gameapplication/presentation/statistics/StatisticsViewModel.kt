@@ -7,6 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.network.api.ApiService
 import com.example.network.storage.TokenStorage
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class StatisticsViewModel(
     private val api: ApiService,
@@ -18,29 +22,35 @@ class StatisticsViewModel(
 
     fun load() {
         viewModelScope.launch {
+            try {
+                val userId = tokenStorage.getUserId() ?: return@launch
 
-            val userId = tokenStorage.getUserId() ?: return@launch
+                val games = api.getGames()
+                    .filter { it.userId == userId }
 
-            val games = api.getGames(userId)
-            val scheduled = api.getScheduled(userId)
+                val scheduled = api.getScheduled()
+                    .filter { it.userId == userId }
 
-            val earnings = games
-                .filter { isThisWeek(it.createdAt) }
-                .sumOf { it.points }
+                val earnings = games.sumOf { it.points }
 
-            val circleGames = games.count { it.type == "circle" && it.isWin }
-            val imageGames = games.count { it.type == "image" && it.isWin }
+                val circleWins = games.count {
+                    it.type == "circle" && it.isWin
+                }
 
-            _state.value = StatisticsState(
-                earnings = earnings,
-                circleWins = circleGames,
-                imageWins = imageGames,
-                scheduledCount = scheduled.size
-            )
+                val imageWins = games.count {
+                    it.type == "image" && it.isWin
+                }
+
+                _state.value = StatisticsState(
+                    earnings = earnings,
+                    circleWins = circleWins,
+                    imageWins = imageWins,
+                    scheduledCount = scheduled.size
+                )
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
-    }
-
-    private fun isThisWeek(date: String): Boolean {
-        return true
     }
 }

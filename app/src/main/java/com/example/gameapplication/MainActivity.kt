@@ -5,9 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import com.example.gameapplication.data.repository.AuthRepositoryImpl
-import com.example.gameapplication.domain.usecase.LoginUseCase
-import com.example.gameapplication.domain.usecase.RegisterUseCase
+import com.example.gameapplication.data.AuthRepositoryImpl
+import com.example.gameapplication.domain.LoginUseCase
+import com.example.gameapplication.domain.RegisterUseCase
 import com.example.gameapplication.navigation.AppNavigation
 import com.example.gameapplication.presentation.login.LoginViewModel
 import com.example.gameapplication.presentation.register.RegisterViewModel
@@ -40,7 +40,8 @@ class MainActivity : ComponentActivity() {
                 navController = navController,
                 loginViewModel = loginViewModel,
                 registerViewModel = registerViewModel,
-                tokenStorage = tokenStorage
+                tokenStorage = tokenStorage,
+                api = api
             )
         }
     }

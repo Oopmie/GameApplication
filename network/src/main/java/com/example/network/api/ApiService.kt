@@ -20,7 +20,7 @@ interface ApiService {
 
     // GAMES (для статистики)
     @GET("games")
-    suspend fun getGames(@Query("userId") userId: String): List<GameDto>
+    suspend fun getGames(): List<GameDto>
 
     @POST("games")
     suspend fun addGame(@Body game: GameDto): GameDto
@@ -28,10 +28,8 @@ interface ApiService {
 
     // SCHEDULE
     @GET("scheduledGames")
-    suspend fun getScheduled(@Query("userId") userId: String): List<ScheduledGameDto>
+    suspend fun getScheduled(): List<ScheduledGameDto>
 
     @POST("scheduledGames")
-    suspend fun addScheduled(
-        @Body game: ScheduledGameDto
-    )
+    suspend fun addScheduled(@Body game: ScheduledGameDto)
 }

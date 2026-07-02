@@ -1,4 +1,4 @@
-package com.example.gameapplication.data.local
+package com.example.gameapplication.data
 
 import android.content.Context
 

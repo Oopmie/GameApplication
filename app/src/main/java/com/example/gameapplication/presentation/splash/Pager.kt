@@ -4,7 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
-import com.example.gameapplication.data.local.AppPreferences
+import com.example.gameapplication.data.AppPreferences
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

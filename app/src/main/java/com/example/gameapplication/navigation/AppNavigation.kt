@@ -6,13 +6,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.gameapplication.data.local.AppPreferences
+import com.example.gameapplication.data.AppPreferences
 import com.example.gameapplication.presentation.login.LoginScreen
 import com.example.gameapplication.presentation.login.LoginViewModel
 import com.example.gameapplication.presentation.register.RegisterScreen
 import com.example.gameapplication.presentation.register.RegisterViewModel
 import com.example.gameapplication.presentation.splash.Pager
 import com.example.gameapplication.presentation.splash.SplashScreen
+import com.example.network.api.ApiService
 import com.example.network.storage.TokenStorage
 
 @Composable
@@ -20,7 +21,8 @@ fun AppNavigation(
     navController: NavHostController,
     loginViewModel: LoginViewModel,
     registerViewModel: RegisterViewModel,
-    tokenStorage: TokenStorage
+    tokenStorage: TokenStorage,
+    api: ApiService
 ) {
 
     val context = LocalContext.current
@@ -87,7 +89,7 @@ fun AppNavigation(
         }
 
         composable("main") {
-            MainNavGraph(tokenStorage = tokenStorage)
+            MainNavGraph(tokenStorage = tokenStorage, api = api)
         }
     }
 }

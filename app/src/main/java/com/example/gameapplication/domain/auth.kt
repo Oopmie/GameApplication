@@ -1,6 +1,4 @@
-package com.example.gameapplication.domain.usecase
-
-import com.example.gameapplication.domain.repository.AuthRepository
+package com.example.gameapplication.domain
 
 class LoginUseCase(
     private val repository: AuthRepository
